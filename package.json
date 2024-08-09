@@ -46,7 +46,7 @@
     "wouter": "^2.12.1"
   },
   "scripts": {
-    "start": "vite",
+    "start": "vite --no-open",
     "dev": "pnpm start",
     "start:mock": "VITE_APP_OFFLINE=true vite",
     "start:production": "serve --ssl-cert config/crt/dummy.pem --ssl-key config/crt/dummy.key --no-request-logging -p ${PORT:-3010} build",
@@ -60,7 +60,6 @@
     "lint": "eslint .",
     "generate-index": "pnpm ts-node scripts/generateIndex.ts",
     "predeploy": "pnpm generate-index && pnpm build",
-    "prepare": "husky",
     "e2e": "pnpm playwright test",
     "e2e:prod": "PROD_RUN=true pnpm playwright test",
     "test-ct": "pnpm playwright test -c playwright-ct.config.ts",
@@ -137,7 +136,6 @@
     "express": "^4.19.2",
     "happy-dom": "^12.10.3",
     "html-minifier": "^4.0.0",
-    "husky": "^9.0.11",
     "js-yaml": "^4.1.0",
     "lint-staged": "^15.2.2",
     "lodash": "^4.17.21",
