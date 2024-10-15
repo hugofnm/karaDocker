@@ -36,7 +36,7 @@ function Game() {
   return (
     <>
       <Helmet>
-        <title>Game | AllKaraoke.Party - Free Online Karaoke Party Game</title>
+        <title>Game</title>
       </Helmet>
       <NoPrerender>
         {singSetup ? (

@@ -8,17 +8,14 @@ import useSong from 'modules/Songs/hooks/useSong';
 import useSongIndex from 'modules/Songs/hooks/useSongIndex';
 import useBackgroundMusic from 'modules/hooks/useBackgroundMusic';
 import useQueryParam from 'modules/hooks/useQueryParam';
-import posthog from 'posthog-js';
 import { Helmet } from 'react-helmet';
 import { LazyConvert } from 'routes/Convert/Convert';
-import { useShareSongs } from 'routes/Edit/ShareSongsModal';
 import { Link } from 'wouter';
 
 dayjs.extend(relativeTime);
 
 export default function Edit() {
   const { data } = useSongIndex(true);
-  const [shareSongs] = useShareSongs(null);
   const songId = useQueryParam('song');
   useBackgroundMusic(false);
   const song = useSong(songId ?? '');
@@ -28,7 +25,7 @@ export default function Edit() {
   return (
     <Paper elevation={2} sx={{ minHeight: '100vh', width: '1260px', margin: '0 auto', paddingTop: '30px' }}>
       <Helmet>
-        <title>Edit Song | AllKaraoke.Party - Free Online Karaoke Party Game</title>
+        <title>Edit Song</title>
       </Helmet>
       <TopBar>
         <Link to="edit/list/">
@@ -47,10 +44,6 @@ export default function Edit() {
 
                 if (proceed) {
                   await SongDao.deleteSong(song.data!.id);
-
-                  if (shareSongs && data.some((songInIndex) => songInIndex.id === song.data!.id)) {
-                    posthog.capture('unshare-song', { songId: song.data!.id });
-                  }
                 }
               }}
               data-test="delete-song">

@@ -16,7 +16,6 @@ import AuthorAndVideo, { AuthorAndVidEntity } from 'routes/Convert/Steps/AuthorA
 import BasicData, { BasicDataEntity } from 'routes/Convert/Steps/BasicData';
 import SongMetadata, { SongMetadataEntity } from 'routes/Convert/Steps/SongMetadata';
 import SyncLyricsToVideo from 'routes/Convert/Steps/SyncLyricsToVideo';
-import { shareSong } from 'routes/Edit/ShareSongsModal';
 import { ValuesType } from 'utility-types';
 import { Link } from 'wouter';
 
@@ -230,7 +229,6 @@ export default function ConvertView({ song }: Props) {
               else if (steps.at(currentStep) === 'metadata') {
                 setIsSaving(true);
                 await SongDao.store(finalSong!);
-                await shareSong(finalSong!.id);
                 setIsSaving(false);
                 navigate(`edit/list/`, { id: finalSong!.id, created: !isEdit ? 'true' : null, song: null });
               }

@@ -33,7 +33,7 @@ function QuickSetup(props: Props) {
   return (
     <>
       <Helmet>
-        <title>Select Input | AllKaraoke.Party - Free Online Karaoke Party Game</title>
+        <title>Select Input</title>
       </Helmet>
       {mobilePhoneMode === null && isMobileDevice ? (
         <SuggestMobileMode />

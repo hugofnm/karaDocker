@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Delete, Download, Edit as EditIcon, Visibility, VisibilityOff } from '@mui/icons-material';
-import { Button, FormControlLabel, Grid, IconButton, Switch } from '@mui/material';
+import { Button, Grid, IconButton } from '@mui/material';
 import dayjs from 'dayjs';
 import { SongPreview } from 'interfaces';
 import { MRT_ColumnDef, MaterialReactTable } from 'material-react-table';
@@ -13,10 +13,8 @@ import convertSongToTxt from 'modules/Songs/utils/convertSongToTxt';
 import useBackgroundMusic from 'modules/hooks/useBackgroundMusic';
 import useQueryParam from 'modules/hooks/useQueryParam';
 import { buildUrl } from 'modules/hooks/useSmoothNavigate';
-import posthog from 'posthog-js';
 import { useMemo } from 'react';
 import { Helmet } from 'react-helmet';
-import ShareSongsModal, { useShareSongs } from 'routes/Edit/ShareSongsModal';
 import { Link } from 'wouter';
 
 interface Props {}
@@ -25,9 +23,7 @@ export default function SongList(props: Props) {
   useBackground(false);
   useBackgroundMusic(false);
   const { data, reload } = useSongIndex(true);
-  const [shareSongs, setShareSongs] = useShareSongs(null);
 
-  const created = useQueryParam('created');
   const songId = useQueryParam('id');
 
   const columns: MRT_ColumnDef<SongPreview>[] = useMemo(
@@ -91,11 +87,10 @@ export default function SongList(props: Props) {
   return (
     <>
       <Helmet>
-        <title>Song List | AllKaraoke.Party - Free Online Karaoke Party Game</title>
+        <title>Song List</title>
       </Helmet>
       <NoPrerender>
         <Container>
-          {created && <ShareSongsModal id={songId} />}
           <NormalizeFontSize />
           <Grid container rowGap={2}>
             <Grid item xs={3} display={'flex'} alignItems={'center'} justifyContent={'flex-start'}>
@@ -175,11 +170,6 @@ export default function SongList(props: Props) {
 
                         if (proceed) {
                           await SongDao.deleteSong(row.original.id);
-
-                          if (shareSongs && data.some((song) => song.id === row.original.id)) {
-                            posthog.capture('unshare-song', { songId: row.original.id });
-                          }
-
                           reload();
                         }
                       }}
@@ -200,21 +190,6 @@ export default function SongList(props: Props) {
                 enableFullScreenToggle={false}
               />
             </Grid>
-            {shareSongs !== null && (
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Switch
-                      defaultChecked
-                      checked={shareSongs}
-                      onChange={(e) => setShareSongs(e.target.checked)}
-                      data-test="share-songs-switch"
-                    />
-                  }
-                  label="Share added songs (so they can be played by others)"
-                />
-              </Grid>
-            )}
           </Grid>
         </Container>
       </NoPrerender>

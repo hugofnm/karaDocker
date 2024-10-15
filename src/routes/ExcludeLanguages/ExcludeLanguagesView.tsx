@@ -43,7 +43,7 @@ interface Props {
   closeText: string;
 }
 
-const MIN_SONGS_COUNT = isE2E() ? 0 : 10;
+const MIN_SONGS_COUNT = 5;
 
 function ExcludeLanguagesView({ onClose, closeText }: Props) {
   const { register } = useKeyboardNav({ onBackspace: onClose });
@@ -124,7 +124,7 @@ function ExcludeLanguagesView({ onClose, closeText }: Props) {
               {...register(`lang-${name}`, () => toggleLanguage(name))}>
               <Check>{excluded ? <CheckBoxOutlineBlank /> : <CheckBox />}</Check>
               <span>
-                <LanguageName>{name}</LanguageName> ({count} songs)
+                <LanguageName>{name}</LanguageName> ({count})
               </span>
               <LanguageFlagBackground data-excluded={excluded}>
                 <Flag language={[name]} />
@@ -187,8 +187,8 @@ const Check = styled.div`
 
 const LanguageListContainer = styled.div`
   margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 `;
 const LanguageName = styled.span`
@@ -207,13 +207,13 @@ const LanguageFlagBackground = styled.div`
   bottom: 0;
   right: 0;
   img {
-    width: 14rem;
+    width: 8rem;
     height: 8rem;
     object-fit: cover;
   }
   overflow: hidden;
-  width: 14rem;
-  height: 8rem;
+  width: 8rem;
+  height: 8rem; 
 `;
 
 const LanguageEntry = styled(MenuButton)`
@@ -226,11 +226,12 @@ const LanguageEntry = styled(MenuButton)`
   }
   ${typography};
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: flex-start;
   gap: 2rem;
   font-size: 2.5rem;
   padding-left: 3rem;
+  padding-right: 10rem;
   margin: 0;
   height: 8rem;
 

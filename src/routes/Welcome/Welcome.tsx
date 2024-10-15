@@ -9,7 +9,6 @@ import useKeyboardNav from 'modules/hooks/useKeyboardNav';
 import useSmoothNavigate from 'modules/hooks/useSmoothNavigate';
 import { Helmet } from 'react-helmet';
 import { BackgroundMusicSetting, useSettingValue } from 'routes/Settings/SettingsState';
-import FacebookLink from 'routes/Welcome/FacebookLink';
 
 function Welcome() {
   const [backgroundMusicSelection] = useSettingValue(BackgroundMusicSetting);
@@ -22,7 +21,7 @@ function Welcome() {
   return (
     <MenuWithLogo>
       <Helmet>
-        <title>Main Menu | AllKaraoke.Party - Free Online Karaoke Party Game</title>
+        <title>Main Menu</title>
         <link rel="preload" href="/songs/index.json" as="fetch" type="application/json" crossOrigin="anonymous" />
         <link rel="preload" href="/mostPopularSongs.json" as="fetch" type="application/json" crossOrigin="anonymous" />
       </Helmet>
@@ -44,7 +43,6 @@ function Welcome() {
           </span>
         </BackgroundMusicCredit>
       )}
-      <FacebookLink />
       <>
         <SmoothLink to="game/">
           <MenuButton {...register('sing-a-song', () => navigate('game/'))}>Sing a song</MenuButton>

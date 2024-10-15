@@ -52,7 +52,7 @@ function LandingPage() {
   return (
     <LayoutGame toolbar={false}>
       <Helmet>
-        <title>AllKaraoke.Party - Free Online Karaoke Party Game</title>
+        <title>KaraDocker</title>
       </Helmet>
       <GithubRibbon />
       <Container>
@@ -72,7 +72,7 @@ function LandingPage() {
         <Stats>
           <StatSegment>
             <StatsDescription>
-              <strong>AllKaraoke</strong> is a free online karaoke game inspired by PlayStation's{' '}
+              <strong>KaraDocker</strong> is a free online karaoke game inspired by PlayStation's{' '}
               <strong>SingStar</strong>. Sing along to your favorite songs and compete with your friends, all through
               the browser! Updated almost weekly with new songs and features.
             </StatsDescription>
@@ -116,7 +116,7 @@ function LandingPage() {
               ▸ <strong>100% Free</strong> and open source
               <StatSubText>
                 Check the{' '}
-                <a href="https://github.com/Asvarox/allkaraoke" target="_blank" rel="noreferrer">
+                <a href="https://github.com/hugofnm/karadocker" target="_blank" rel="noreferrer">
                   GitHub repository
                 </a>
               </StatSubText>

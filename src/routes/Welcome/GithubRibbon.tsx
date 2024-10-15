@@ -5,7 +5,7 @@ export default function GithubRibbon() {
   return (
     <>
       <Ribbon
-        href="https://github.com/Asvarox/allkaraoke"
+        href="https://github.com/hugofnm/karadocker"
         aria-label="View source on GitHub"
         target="_blank"
         rel="noreferrer">

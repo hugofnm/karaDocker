@@ -16,7 +16,7 @@ function ManageSongs(props: Props) {
   return (
     <MenuWithLogo>
       <Helmet>
-        <title>Manage Songs | AllKaraoke.Party - Free Online Karaoke Party Game</title>
+        <title>Manage Songs</title>
       </Helmet>
       <h1>Manage Songs</h1>
       <SmoothLink to="exclude-languages/">

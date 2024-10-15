@@ -56,7 +56,7 @@ function Settings(props: Props) {
   return (
     <MenuWithLogo>
       <Helmet>
-        <title>Settings | AllKaraoke.Party - Free Online Karaoke Party Game</title>
+        <title>Settings</title>
       </Helmet>
       <h1>Settings</h1>
       <Switcher

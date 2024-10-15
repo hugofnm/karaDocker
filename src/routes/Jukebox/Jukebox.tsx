@@ -40,7 +40,7 @@ function Jukebox(props: Props) {
   return (
     <LayoutGame>
       <Helmet>
-        <title>Jukebox | AllKaraoke.Party - Free Online Karaoke Party Game</title>
+        <title>Jukebox</title>
       </Helmet>
       <NoPrerender>
         <SongPage
